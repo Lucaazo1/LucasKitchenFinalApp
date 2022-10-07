@@ -66,6 +66,8 @@
         </Setter>
     </Style>
 
+    
+    <!--gör nya icons-->
     <Style x:Key="device_tile_deviceIcon" TargetType="TextBlock">
         <Setter Property="FontFamily" Value="{StaticResource FontAwesome-Regular}" />
         <Setter Property="FontSize" Value="62" />
