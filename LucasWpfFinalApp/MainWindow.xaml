@@ -4,9 +4,20 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LucasWpfFinalApp"
+        xmlns:viewModels="clr-namespace:LucasWpfFinalApp.MVVM.ViewModels"
+        xmlns:views="clr-namespace:LucasWpfFinalApp.MVVM.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        WindowStartupLocation="CenterScreen"
+        Height="720" 
+        Width="1280"
+        Title="MainWindowmain">
+    <Border Background="#3f3f40">
+        <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewModels:KitchenViewModel}">
+                    <views:KitchenView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Border>
 </Window>

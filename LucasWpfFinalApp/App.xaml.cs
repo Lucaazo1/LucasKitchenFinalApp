@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using LucasWpfFinalApp.Helpers;
+using LucasWpfFinalApp.MVVM.ViewModels;
+using LucasWpfFinalApp.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections;
@@ -30,13 +33,17 @@ namespace LucasWpfFinalApp
             {
                 services.AddSingleton<MainWindow>();
                 services.AddSingleton<NavigationStore>();
+                services.AddScoped<IDeviceService, DeviceService>();
+                services.AddScoped<IWeatherService, WeatherService>();
             }).Build();
         }
 
         protected override async void OnStartup(StartupEventArgs e)
         {
             var navigationStore = app!.Services.GetRequiredService<NavigationStore>();
-            navigationStore.CurrentViewModel = new KitchenViewModel(navigationStore);
+            var deviceService = app!.Services.GetRequiredService<IDeviceService>();
+            var weatherService = app!.Services.GetRequiredService<IWeatherService>();
+            navigationStore.CurrentViewModel = new KitchenViewModel(navigationStore, deviceService, weatherService);
 
             await app!.StartAsync();
             var MainWindow = app.Services.GetRequiredService<MainWindow>();
