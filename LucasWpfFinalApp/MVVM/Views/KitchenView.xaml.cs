@@ -36,7 +36,10 @@ namespace LucasWpfFinalApp.MVVM.Views
                 using ServiceClient serviceClient = ServiceClient.CreateFromConnectionString("HostName=kyh-shared-iothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=/5asl5agNK3raYZNyfkumb0vcsnT+OdUeoUOupOWLQo=");
 
                 var directMethod = new CloudToDeviceMethod("OnOff");
+
+                //vad gör den?
                 //deviceMethod.SetPayloadJson(JsonConvert.SerializeObject(new { interval = 50000 }));
+
                 var result = await serviceClient.InvokeDeviceMethodAsync(deviceItem.DeviceId, directMethod);
             }
             catch { }

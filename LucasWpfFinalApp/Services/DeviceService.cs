@@ -58,6 +58,15 @@ namespace LucasWpfFinalApp.Services
                                 device.IconInActive = "\uf0eb";
                                 break;
 
+                            case "food":
+                                device.IconActive = "\ue43b";
+                                device.IconInActive = "\uf858";
+                                break;
+                            case "like":
+                                device.IconActive = "\uf164";
+                                device.IconInActive = "\uf165";
+                                break;
+
                             default:
                                 device.IconActive = "\uf2db";
                                 device.IconInActive = "\uf2db";
