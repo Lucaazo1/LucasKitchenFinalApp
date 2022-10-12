@@ -29,5 +29,9 @@ namespace DeviceConsoleApp.Models
 
         [JsonProperty("deviceState")]
         public bool DeviceState { get; set; } = false;
+
+        
+        [JsonProperty("isChecked")]
+        public bool IsChecked { get; set; } = false;
     }
 }

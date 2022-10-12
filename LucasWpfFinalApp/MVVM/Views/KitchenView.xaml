@@ -36,10 +36,16 @@
                 <StackPanel Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 -15 0 0">
                     <TextBlock Text="{Binding CurrentTime}" FontSize="52" Foreground="LightGray" HorizontalAlignment="Center" VerticalAlignment="Top"  />
                     <TextBlock Text="{Binding CurrentDate}" FontSize="20" Foreground="LightGray" HorizontalAlignment="Center" />
+
+                    <TextBox x:Name="SearchBarTextBox" FontSize="20" Margin="15" Foreground="Black" AcceptsReturn="False" TextWrapping="NoWrap" Width="200"/>
+                    <Button Foreground="White" Name="Search" Background="#3f3f40" Height="20" Width="100" Padding="10"/>
                 </StackPanel>
 
-                <Button Grid.Column="2" Content="&#xE713;" FontFamily="Segoe MDL2 Assets"  FontSize="32" Background="Transparent" Foreground="LightGray" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" />
-
+                <StackPanel Grid.Column="2"> <!--HorizontalAlignment="Center" VerticalAlignment="Top"-->
+                    <Button Content="&#xE713;" FontFamily="Segoe MDL2 Assets"  FontSize="32" Background="Transparent" Foreground="LightGray" BorderThickness="0" HorizontalAlignment="Right" VerticalAlignment="Top" />
+                    <TextBlock Text="Kitchen" FontSize="20" Foreground="LightGray" HorizontalAlignment="Center" />
+                </StackPanel>
+               
             </Grid>
 
             <ItemsControl x:Name="lv_Tiles" ItemsSource="{Binding DeviceItems}" Grid.Row="1" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch">

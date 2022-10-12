@@ -27,6 +27,7 @@ namespace LucasWpfFinalApp.MVVM.Views
             InitializeComponent();
         }
 
+
         private async void btn_DirectMethod_Click(object sender, RoutedEventArgs e)
         {
             try

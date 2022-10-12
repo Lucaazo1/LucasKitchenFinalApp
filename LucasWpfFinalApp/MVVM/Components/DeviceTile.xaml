@@ -21,8 +21,7 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-
-
+            <Button x:Name="deviceDeleteSwitch" Click="deviceDeleteSwitch_Click" Grid.Row="0"  Grid.Column="0" />
             <CheckBox IsChecked="{Binding DeviceState}" Grid.Row="0"  Grid.Column="1" x:Name="deviceToggleSwitch" Style="{StaticResource device_tile_toggleSwitch }" />
 
             <TextBlock Grid.Row="1"  Grid.ColumnSpan="2" Style="{StaticResource device_tile_deviceIcon}" />

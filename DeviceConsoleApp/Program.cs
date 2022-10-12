@@ -143,6 +143,7 @@ class Program
         twinCollection["deviceName"] = settings.DeviceName;
         twinCollection["deviceType"] = settings.DeviceType;
         twinCollection["deviceState"] = settings.DeviceState;
+        twinCollection["isChecked"] = settings.DeviceState;
         twinCollection["location"] = settings.Location;
         await deviceClient.UpdateReportedPropertiesAsync(twinCollection);
     }
@@ -151,6 +152,7 @@ class Program
     {
         Console.WriteLine("Configuring Direct Method (ON/OFF). Please wait...");
         await deviceClient.SetMethodHandlerAsync("OnOff", OnOff, null);
+        await deviceClient.SetMethodHandlerAsync("Delete", Delete, null);
     }
 
     private static Task<MethodResponse> OnOff(MethodRequest methodRequest, object userContext)
@@ -163,10 +165,32 @@ class Program
             Console.WriteLine($"Changing DeviceState from {settings.DeviceState} to {data!.deviceState}.");
             settings.DeviceState = data!.deviceState;
 
-            SetDeviceTwinAsync().ConfigureAwait(false);
-            SaveConfigurationAsync().ConfigureAwait(false);
+            SetDeviceTwinAsync().ConfigureAwait(false); //Var false som default
+            SaveConfigurationAsync().ConfigureAwait(false); //Var false som default
             Console.WriteLine($"Device {settings.DeviceId} configured and awaiting new commands.");
             return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(settings)), 200));
+        }
+        catch (Exception ex)
+        {
+            return Task.FromResult(new MethodResponse(Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(ex)), 400));
+        }
+
+    }
+
+
+    private static Task<MethodResponse> Delete(MethodRequest methodRequest, object userContext)
+    {
+
+        // Sw StreamWriter, skriver över filer och tömmer mapparna, sen deletar den i projektet
+        try
+        {
+            //using var conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\lucas\\source\\repos\\LucasKitchenFinalApp - väder\\DeviceConsoleApp\\device_consoleapp_db.mdf\";Integrated Security=True");
+            //conn.Execute($"DELETE FROM Settings;"); // Vi behöver inte skriva "WHERE DeviceId ='settings.deviceId'" för att vi har redan valt Id för projektet.
+            
+            using var sw = new StreamWriter(filePath);
+            sw.WriteLine("");
+            
+            return Task.FromResult(new MethodResponse(new byte[0], 200));
         }
         catch (Exception ex)
         {
