@@ -93,7 +93,7 @@ class Program
             }
             catch
             {
-                await Task.Delay(500);
+                await Task.Delay(50);
             }
         }
     }
@@ -132,7 +132,7 @@ class Program
         {
             Console.Write(" - Failed! No interval property found.");
         }
-        await Task.Delay(500);
+        await Task.Delay(50);
     }
 
     private static async Task SetDeviceTwinAsync()
