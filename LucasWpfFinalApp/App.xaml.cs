@@ -25,38 +25,39 @@ namespace LucasWpfFinalApp
     */
     public partial class App : Application
     {
-        public static IHost? app { get; private set; }
 
-        public App()
-        {
-            app = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
-            {
-                services.AddSingleton<MainWindow>();
-                services.AddSingleton<NavigationStore>();
-                services.AddScoped<IDeviceService, DeviceService>();
-                services.AddScoped<IWeatherService, WeatherService>();
-            }).Build();
-        }
+        //public static IHost? app { get; private set; }
 
-        protected override async void OnStartup(StartupEventArgs e)
-        {
-            var navigationStore = app!.Services.GetRequiredService<NavigationStore>();
-            var deviceService = app!.Services.GetRequiredService<IDeviceService>();
-            var weatherService = app!.Services.GetRequiredService<IWeatherService>();
-            navigationStore.CurrentViewModel = new KitchenViewModel(navigationStore, deviceService, weatherService);
+    //public App()
+    //{
+    //    app = Host.CreateDefaultBuilder().ConfigureServices((context, services) =>
+    //    {
+    //        services.AddSingleton<MainWindow>();
+    //        services.AddSingleton<NavigationStore>();
+    //        services.AddScoped<IDeviceService, DeviceService>();
+    //        services.AddScoped<IWeatherService, WeatherService>();
+    //    }).Build();
+    //}
 
-            await app!.StartAsync();
-            var MainWindow = app.Services.GetRequiredService<MainWindow>();
-            MainWindow.DataContext = new MainViewModel(navigationStore);
-            MainWindow.Show();
+    //protected override async void OnStartup(StartupEventArgs e)
+    //{
+    //    var navigationStore = app!.Services.GetRequiredService<NavigationStore>();
+    //    var deviceService = app!.Services.GetRequiredService<IDeviceService>();
+    //    var weatherService = app!.Services.GetRequiredService<IWeatherService>();
+    //    navigationStore.CurrentViewModel = new MainViewModel(navigationStore, deviceService, weatherService);
 
-            base.OnStartup(e);
-        }
+    //    await app!.StartAsync();
+    //    var MainWindow = app.Services.GetRequiredService<MainWindow>();
+    //    MainWindow.DataContext = new MainViewModel();
+    //    MainWindow.Show();
 
-        protected override async void OnExit(ExitEventArgs e)
-        {
-            await app!.StopAsync();
-            base.OnExit(e);
-        }
+    //    base.OnStartup(e);
+    //}
+
+    //protected override async void OnExit(ExitEventArgs e)
+    //{
+    //    await app!.StopAsync();
+    //    base.OnExit(e);
+    //}
     }
 }

@@ -1,9 +1,6 @@
 ﻿using LucasWpfFinalApp.Helpers;
 using LucasWpfFinalApp.MVVM.Models;
 using LucasWpfFinalApp.Services;
-using Microsoft.Azure.Devices;
-using Microsoft.Azure.Devices.Shared;
-using Microsoft.Graph;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,11 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace LucasWpfFinalApp.MVVM.ViewModels
 {
-    internal class KitchenViewModel : BaseViewModel
+    internal class BedroomViewModel : BaseViewModel
     {
         private readonly NavigationStore _navigationStore;
         private readonly IDeviceService _deviceService;
@@ -23,9 +19,9 @@ namespace LucasWpfFinalApp.MVVM.ViewModels
 
         public ICommand NavigateToSettings { get; }
 
-        public KitchenViewModel()
+        public BedroomViewModel( )
         {
-            //_navigationStore = navigationStore;
+ 
             _deviceService = new DeviceService();
             _weatherService = new WeatherService();
 
@@ -127,7 +123,7 @@ namespace LucasWpfFinalApp.MVVM.ViewModels
 
         private async Task PopulateDeviceItemsAsync()
         {
-            var result = await _deviceService.GetDevicesAsync("SELECT * FROM devices WHERE properties.reported.location='kitchen'");
+            var result = await _deviceService.GetDevicesAsync("SELECT * FROM devices WHERE properties.reported.location='bedroom'");
 
             result.ForEach(device =>
             {

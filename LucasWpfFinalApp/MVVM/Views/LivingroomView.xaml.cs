@@ -18,11 +18,11 @@ using System.Windows.Shapes;
 namespace LucasWpfFinalApp.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for BedroomView.xaml
+    /// Interaction logic for LivingroomView.xaml
     /// </summary>
-    public partial class BedroomView : UserControl
+    public partial class LivingroomView : UserControl
     {
-        public BedroomView()
+        public LivingroomView()
         {
             InitializeComponent();
         }

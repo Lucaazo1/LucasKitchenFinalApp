@@ -6,18 +6,26 @@
         xmlns:local="clr-namespace:LucasWpfFinalApp"
         xmlns:viewModels="clr-namespace:LucasWpfFinalApp.MVVM.ViewModels"
         xmlns:views="clr-namespace:LucasWpfFinalApp.MVVM.Views"
+        xmlns:components="clr-namespace:LucasWpfFinalApp.MVVM.Components"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Height="720" 
         Width="1280"
         Title="MainWindowmain">
-    <Border Background="#3f3f40">
-        <ContentControl Content="{Binding CurrentViewModel}">
-            <ContentControl.Resources>
-                <DataTemplate DataType="{x:Type viewModels:KitchenViewModel}">
-                    <views:KitchenView />
-                </DataTemplate>
-            </ContentControl.Resources>
-        </ContentControl>
+
+    <Window.DataContext>
+        <viewModels:MainViewModel />
+    </Window.DataContext>
+
+    <Border Background="#333333" CornerRadius="12">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <ContentControl Grid.Row="0" Content="{Binding CurrentView}" />
+            <components:MenuComponent Grid.Row="1" Margin="0 -140 0 0" />
+        </Grid>
     </Border>
 </Window>

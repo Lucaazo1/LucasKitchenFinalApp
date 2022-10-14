@@ -16,13 +16,20 @@ class Program
     private static DeviceSettings settings = new DeviceSettings();
     private static string apiUri = "http://localhost:7003/api/devices/connect";
     private static string filePath = @$"{AppDomain.CurrentDomain.BaseDirectory}\configuration.json";
+    //@$"{AppDomain.CurrentDomain.BaseDirectory}\configuration.json";
+    //C:\Users\lucas\source\repos\LucasKitchenFinalApp - väder\DeviceConsoleApp\bin\Debug
 
     public static async Task Main()
     {
         await GetConfigurationAsync();
 
-        if (string.IsNullOrEmpty(settings.DeviceId))
-            SetSettings();
+        try
+        {
+            if (string.IsNullOrEmpty(settings.DeviceId))
+                SetSettings();
+        }
+        catch { }
+        
 
         await SetConnectionStringAsync();
         await InitializeDeviceAsync();
@@ -43,7 +50,10 @@ class Program
             using var sr = new StreamReader(filePath);
             settings = JsonConvert.DeserializeObject<DeviceSettings>(await sr.ReadToEndAsync());
         }
-        catch { }
+        catch 
+        {
+            settings = new DeviceSettings();
+        }
     }
 
     private static async Task SaveConfigurationAsync()
@@ -93,7 +103,7 @@ class Program
             }
             catch
             {
-                await Task.Delay(50);
+                await Task.Delay(500);
             }
         }
     }
@@ -132,7 +142,7 @@ class Program
         {
             Console.Write(" - Failed! No interval property found.");
         }
-        await Task.Delay(50);
+        await Task.Delay(500);
     }
 
     private static async Task SetDeviceTwinAsync()
@@ -186,10 +196,20 @@ class Program
         {
             //using var conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=\"C:\\Users\\lucas\\source\\repos\\LucasKitchenFinalApp - väder\\DeviceConsoleApp\\device_consoleapp_db.mdf\";Integrated Security=True");
             //conn.Execute($"DELETE FROM Settings;"); // Vi behöver inte skriva "WHERE DeviceId ='settings.deviceId'" för att vi har redan valt Id för projektet.
-            
-            using var sw = new StreamWriter(filePath);
-            sw.WriteLine("");
-            
+            File.Delete(filePath);
+
+
+            //från internet
+            //string[] files = Directory.GetFiles(filePath);
+            //foreach (string file in files)
+            //{
+            //    File.Delete(file);
+            //    Console.WriteLine($"{file} is deleted.");
+            //}
+
+
+            //Hans lösning: File.Delete(filePath);
+
             return Task.FromResult(new MethodResponse(new byte[0], 200));
         }
         catch (Exception ex)
