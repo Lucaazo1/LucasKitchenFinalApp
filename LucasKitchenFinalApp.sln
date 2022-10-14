@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasKitchenFinalApp", "LucasKitchenFinalApp\LucasKitchenFinalApp.csproj", "{F2C5B314-EAA9-423A-892D-8241F6D606C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasKitchenFinalApp", "LucasKitchenFinalApp\LucasKitchenFinalApp.csproj", "{F2C5B314-EAA9-423A-892D-8241F6D606C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LucasWpfFinalApp", "LucasWpfFinalApp\LucasWpfFinalApp.csproj", "{387A279D-0E53-4F5E-97DF-47D5068EC4FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LucasWpfFinalApp", "LucasWpfFinalApp\LucasWpfFinalApp.csproj", "{387A279D-0E53-4F5E-97DF-47D5068EC4FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeviceConsoleApp", "DeviceConsoleApp\DeviceConsoleApp.csproj", "{BA1E0D93-38B7-4002-9225-94548E35C9A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeviceConsoleApp", "DeviceConsoleApp\DeviceConsoleApp.csproj", "{BA1E0D93-38B7-4002-9225-94548E35C9A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

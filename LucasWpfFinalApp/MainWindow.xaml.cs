@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Device.WPF.TemperatureApp.Services;
+using Device.WPF.TemperatureApp.SetupWizard;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +22,19 @@ namespace LucasWpfFinalApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly ConfigurationService _configurationService;
+
         public MainWindow()
         {
             InitializeComponent();
+            _configurationService = new ConfigurationService();
+
+            if (!Task.Run(() => _configurationService.IsConfiguredAsync()).Result)
+            {
+                this.Hide();
+                SetupWizard setupWizard = new SetupWizard();
+                setupWizard.Show();
+            }
         }
     }
 }

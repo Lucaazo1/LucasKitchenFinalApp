@@ -43,4 +43,9 @@
     <PackageReference Include="Microsoft.Graph" Version="4.43.0" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
 </Project>

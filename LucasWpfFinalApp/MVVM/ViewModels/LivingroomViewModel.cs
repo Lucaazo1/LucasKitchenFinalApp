@@ -123,7 +123,7 @@ namespace LucasWpfFinalApp.MVVM.ViewModels
 
         private async Task PopulateDeviceItemsAsync()
         {
-            var result = await _deviceService.GetDevicesAsync("SELECT * FROM devices WHERE location='livingroom'");
+            var result = await _deviceService.GetDevicesAsync("SELECT * FROM devices WHERE properties.reported.location='livingroom'");
 
             result.ForEach(device =>
             {
