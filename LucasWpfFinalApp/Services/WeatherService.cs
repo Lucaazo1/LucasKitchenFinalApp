@@ -11,7 +11,7 @@ namespace LucasWpfFinalApp.Services
 {
     internal interface IWeatherService
     {
-        public Task<WeatherResponse> GetWeatherDataAsync(string uri = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=bcf8bd2bf6561493badb4ded2a316f53");
+        public Task<WeatherResponse> GetWeatherDataAsync(string uri = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid=bcf8bd2bf6561493badb4ded2a316f53"); //var samma väder i skolan blev kallare nu
     }
 
     internal class WeatherService : IWeatherService
